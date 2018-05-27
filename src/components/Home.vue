@@ -7,7 +7,7 @@
 	<div class="row">
         <div class="profile-header-container">   
     		<div class="profile-header-img">
-                <img class="img-circle" src="https://media.licdn.com/dms/image/C4E03AQG-7mPrM3iAiA/profile-displayphoto-shrink_200_200/0?e=1531958400&v=beta&t=Rv7nIMSUcn3Pgw_Wv_iItfi6Wy1fSCh1ag2cJPdW6Ls" />
+        <img class="img-circle" src="https://media.licdn.com/dms/image/C4E03AQG-7mPrM3iAiA/profile-displayphoto-shrink_200_200/0?e=1531958400&v=beta&t=Rv7nIMSUcn3Pgw_Wv_iItfi6Wy1fSCh1ag2cJPdW6Ls" />
         </div>
         <div class="profile-header-title"> Jurgen Palsma</div>
         <ul class="profile-header-social">
@@ -19,13 +19,20 @@
         </div> 
 	</div>
         
-        <h2>Welcome</h2>
+      <h2>Welcome</h2>
         <div class="row">
         <div class="col">
           <div class="card">
             <div class="card-body">
               <p class="card-text">
-                Hi, welcome to my portfolio website
+                Hi, welcome to my portfolio website. Here you will find my <a target="_blank" href="https://jurgenpalsma.github.io/portfolio/static/pdfs/jurgen-cv-en.pdf">CV</a>
+                 as well as all current and past projects I have worked on. 
+                <br/> <br/>
+                I'm currently looking for a part time job or internship starting from September 2018.
+                <br/> <br/>
+                Feel free to contact me via
+                <a href="https://www.linkedin.com/in/jurgenpalsma/" target="_blank"> Linkedin </a> or  
+                <a href="mailto:jurgen.palsma@gmail.com">Email</a>
               </p>
             </div>
           </div>
@@ -41,9 +48,9 @@
               <h5 class="card-title">Testing Directional Changes with Machine Learning Algorithms</h5>
               <h6 class="card-subtitle mb-2 text-muted">Msc Dissertation Project</h6>
               <p class="card-text">
-                Here is a nice p describing my m asters project. it should probs have the same length as the 
+                Generating Trading Strategies using Machine Learning  
               </p>
-              <router-link to="Dc">Check it out</router-link>
+              <router-link to="Dc">Check it out !</router-link>
             </div>
           </div>
         </div>
@@ -53,13 +60,64 @@
               <h5 class="card-title">Modimo</h5>
               <h6 class="card-subtitle mb-2 text-muted">Epitech Innovative Project</h6>
               <p class="card-text">
-                Here is a nice p describing Modimo project. it should pr obs have the same length as the ohter cards. and say that its good
+                My EPITECH end of study project. A platform that seeks to disrupt the way accommodation is managed. 
               </p>
-              <router-link to="Modimo">Check it out</router-link>
+              <br/>
+              <router-link to="Modimo">Check it out!</router-link>
             </div>
           </div>
         </div>
         <div class="col"></div>
+      </div>
+
+      <br/>
+      <h3>Search by tags</h3>
+        <div class="row">
+        <div class="col">
+          <div class="card">
+            
+            <div class="card-body">
+                <div v-for="(tags, theme) in filteredTags">
+                  <h6>{{theme}}</h6>
+                  <div class="item-content-block tags"> 
+                    <tag v-for="t in tags" v-bind:key="t.id" :tag=t></tag>
+                  </div>
+                </div>
+              
+                </div>
+            </div>
+          </div>
+        </div>
+
+
+        <br/>
+        <h3>Past Projects and works</h3>
+        <div class="row">
+
+        <div class="col">
+          <div class="card card-clickable">
+            <div class="card-body">
+              <h5 class="card-title">KentChat</h5>
+              <p class="card-text">
+                A Python Chat and API running on App Engine  
+              </p>
+              <a href="https://github.com/JurgenPalsma/KentChat" target="_blank">Check it out !</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="card card-clickable" @click="linkTo('Uni')">
+            <div class="card-body">
+              <h5 class="card-title">University research</h5>
+              <p class="card-text">
+                A list of interesting research documents I produced.  
+              </p>
+              <router-link to="Uni">Check it out!</router-link>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -68,11 +126,26 @@
 </template>
 
 <script>
+import Tag from './Tag'
+import TagList from '../abs'
+
 export default {
   name: 'Home',
+  components:{'tag': Tag},
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  computed: {
+    filteredTags: function() {
+      let tgs = {}
+      Object.keys(TagList).forEach(function(t) {
+      if (!tgs[String(TagList[t].theme)]) {
+        tgs[String(TagList[t].theme)] = []
+      }
+      tgs[String(TagList[t].theme)].push(TagList[t])
+      });
+      return tgs;
     }
   },
   methods: {
@@ -112,13 +185,13 @@ body{background:#f9f9f9;}
 }
 
 .profile-header-img {
-    padding: 1px;
+    padding: 0px;
 }
 
 .profile-header-img > img.img-circle {
     width: 120px;
     height: 120px;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid rgba(255, 255, 255, 0);
 }
 
 .profile-header-title {
@@ -183,5 +256,7 @@ body{background:#f9f9f9;}
   border-radius: 100%;
 }
 
+.tags a{background: #6780af46; padding:10px; color:black; display:inline-block; font-size:11px; line-height:11px; border-radius:2px; margin-bottom:5px; margin-right:2px; text-decoration:none;}
+.tags a:hover{background: #5a78af85}
 
 </style>
