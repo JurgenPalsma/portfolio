@@ -4,16 +4,14 @@
     <div class="container-fluid">
         <button type="button" class="btn btn-secondary" @click="linkTo('Home')">Back</button>
         <br/>        <br/>
-        <h2>Testing Directional Changes with different Machine Learning Algorithms</h2>
+        <h2>University Research</h2>
         <div class="row">
         
         <div class="col">
           <div class="card">
             <div class="card-body">
-              <h4> In a few words... </h4>
               <p class="card-text">
-                The goal of this project is to create <b>Trading Strategies</b> in the context of <b>Financial Forecasting and Automated Trading</b>. <br/>
-                In order to do so, I will use a novel approach to record price movements, <a href="http://www.bracil.net/finance/DirectionalChanges/" target="_blank">Directional Changes</a>, and <b>Machine Learning Techniques</b>.
+                Here you can find a list of research documents about Data Mining and Algorithms I produced. 
               </p>
 
               Tags:
@@ -29,8 +27,20 @@
           <div class="card">
             <div class="card-body">
               <p class="card-text">
-                This project is my main focus at the moment, and will officially start in <i>June 2018.</i> <br/> 
-                In the meantime, I'm preparing the project by researching financial forecasting (mostly technical analysis) and I'm following a couple of MOOCs to learn to use Tensorflow.
+                <ul>
+                    <li>
+                        <a href="https://jurgenpalsma.github.io/portfolio/static/pdfs/decisiontrees.pdf" target="_blank"> Producing C4.5 decision trees to classify cars for insurance policies </a>
+                    </li>
+                    <li>
+                        <a href="https://jurgenpalsma.github.io/portfolio/static/pdfs/variableimportance.pdf" target="_blank"> Researching measures of variable importance in Random Forests </a>
+                    </li>
+                    <li>
+                        <a href="https://jurgenpalsma.github.io/portfolio/static/pdfs/rulediscovery.pdf" target="_blank"> Litterature review of Rule Discovery with Evolutionary Algoritms </a>
+                    </li>
+                    <li>
+                        <a href="https://jurgenpalsma.github.io/portfolio/static/pdfs/learningfinance.pdf" target="_blank"> A short vulgarisation article about how Deep Learning and Big Data change Finance </a>
+                    </li>
+                </ul>
               </p>
             </div>
           </div>
@@ -49,7 +59,7 @@ import Projects from '../../projects'
 import TagList from '../../abs'
 
 export default {
-  name: 'Dc',
+  name: 'Uni',
   data () {
     return {
     }
@@ -58,7 +68,7 @@ export default {
     tags: function() {
       let tgs = []
       Object.keys(Projects).forEach(function(p) {
-        if (Projects[p].name == 'Directional Changes') {
+        if (Projects[p].name == 'University Research') {
           Object.keys(TagList).forEach(function(t) {
             if (Projects[p].tags.includes(TagList[t].name)){
               tgs.push(TagList[t])
@@ -69,12 +79,13 @@ export default {
       return tgs;
     }
   },
-  methods: {
+    methods: {
     linkTo: function(path){
       this.$router.push({name: path})
     }
   },
   components:{'tag': Tag},
+
 }
 </script>
 
