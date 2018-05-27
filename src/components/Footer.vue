@@ -5,7 +5,7 @@
     <footer>
     <div class="footer" id="footer">
         <div class="container">
-            <div class="row">
+            <!--<div class="row">
 
                 <div class="col-lg-4  col-md-2 col-sm-4 col-xs-6">
                     <h3> Contact me </h3>
@@ -32,9 +32,9 @@
                     </ul>
                 </div>
                 
-            </div>
+            </div>-->
             <!--/.row--> 
-            <p class="copyright"> Copyright © Modimo 2018. All right reserved. </p>
+            <p class="copyright"> Copyright © Jurgen Palsma 2018. All right reserved. </p>
 
         </div>
         <!--/.container--> 
@@ -54,7 +54,6 @@ export default {
   },
     methods: {
       sendMessage: function() {
-          console.log("salut")
       }  
     },
   created() {
