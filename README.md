@@ -1,6 +1,7 @@
 # jurgenpalsma
 
-> Jurgen Palsma's personal website
+> Portfolio & blog. 
+Check it out here: https://jurgenpalsma.github.io/portfolio/
 
 ## Build Setup
 
